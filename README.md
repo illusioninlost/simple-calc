@@ -10,3 +10,8 @@ Commands:
 	mvn sonar:sonar            // sends code to sonar in localhost
 	mvn deploy                 // sends final artifact .jar to artifactory
 
+ Run all these task in a jenkins pipeline 
+ Separate every task by stages (clean) (test) (sonar) (deploy-art)
+ 
+ 
+ 
