@@ -1,3 +1,17 @@
+<!-- 
+
+	Maven Junit, Sonar and Artifactory commands:
+	
+	mvn clean 
+	mvn test -Dtest=CalcTest   // -Dtest is optional 
+	mvn sonar:sonar            // sends code to sonar in localhost
+	mvn deploy                 // sends final artifact .jar to artifactory
+	
+	* Run all these task in jenkins pipeline 
+	* Separate every task by stages (clean) (test) (sonar) (deploy-art)
+	
+ -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -52,7 +66,7 @@
 	<build>
 	    <!-- location of resources depend on where are located the java resource folders -->
 		<sourceDirectory>src/main/java</sourceDirectory>
-		<testSourceDirectory>src/main/java</testSourceDirectory> <!--  Because test class is in main/java -->
+		<testSourceDirectory>src/main/test</testSourceDirectory> <!--  Because test class is in src/test -->
 		
 		<plugins>
 			<plugin>
@@ -71,9 +85,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.0</version>
 				<configuration>
-					<testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
-					<testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
-					<argLine>
+					<testSourceDirectory>${basedir}/src/main/test/</testSourceDirectory>
+<!-- 					<testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
+ -->					<argLine>
 						--illegal-access=permit
 					</argLine>
 				</configuration>
@@ -89,6 +103,15 @@
 				</configuration>
 			</plugin>
 			<!-- // Maven Test Plugins -->
+			
+			<!--  SonarQube plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+			<!--  // SonarQube plugin -->
+			
 		</plugins>
 
 	</build>
