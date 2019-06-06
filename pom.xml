@@ -110,12 +110,12 @@
 
 	</build>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>USABOS279979L-snapshots</name>
-			<url>http://localhost:8040/artifactory/libs-snapshot</url>
-		</snapshotRepository>
-	</distributionManagement>
-
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>USABOS252360L-snapshots</name>
+        <url>http://localhost:8081/artifactory/libs-snapshot</url>
+    </snapshotRepository>
+</distributionManagement>
+	
 </project>
